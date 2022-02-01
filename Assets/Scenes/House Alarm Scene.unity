@@ -162,11 +162,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d8238cc53530b64fbb7828c3d3bb591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1083469567}
-  damping: 0
-  lookAheadFactor: 3
-  lookAheadReturnSpeed: 0.5
-  lookAheadMoveThreshold: 0.1
+  Target: {fileID: 1083469567}
+  Damping: 0.25
+  LookAheadFactor: 1
+  LookAheadReturnSpeed: 0.5
+  LookAheadMoveThreshold: 0.1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 3.5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -218,7 +218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: 0, z: -10}
+  m_LocalPosition: {x: -6.55, y: -1.92, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -254,9 +254,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1763781506}
-  - {fileID: 1568476525}
   m_Father: {fileID: 983389496}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &558407350
 BoxCollider2D:
@@ -296,7 +295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3a38bb1888f41e43adce45e6b8d8c14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collider: {fileID: 0}
   _exitPosition: {fileID: 1763781506}
 --- !u!1 &759884748
 GameObject:
@@ -1545,6 +1543,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1568476525}
   - {fileID: 558407349}
   - {fileID: 1275891804}
   m_Father: {fileID: 1067026184}
@@ -3234,7 +3233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4940985741439226, guid: 38d22e1553bfb7943b9544b849dee0dd, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4940985741439226, guid: 38d22e1553bfb7943b9544b849dee0dd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3414,12 +3413,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1568476524}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 2, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.01, y: -0.4920001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 558407349}
-  m_RootOrder: 1
+  m_Father: {fileID: 983389496}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1568476526
 BoxCollider2D:
@@ -3459,12 +3458,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af120cf728131d48883ecd3a8516b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collider: {fileID: 0}
-  _audioSource: {fileID: 0}
   _sound: {fileID: 8300000, guid: baa02aaf51706a640aa2386741a4bd5a, type: 3}
   _maxVolume: 0.6
   _soundChangeSpeed: 0.3
-  IsPlaying: 0
 --- !u!82 &1568476528
 AudioSource:
   m_ObjectHideFlags: 0

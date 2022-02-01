@@ -3,12 +3,13 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Chest : InteractiveObject
 {
-    private SpriteRenderer _spriteRenderer;
     [SerializeField] private Sprite _closedSprite;
     [SerializeField] private Sprite _openedSprite;
     [SerializeField] private int _gold;
     [SerializeField] private bool _isOpened;
 
+    private SpriteRenderer _spriteRenderer;
+    
     protected override void Awake()
     {
         base.Awake();
@@ -38,6 +39,12 @@ public class Chest : InteractiveObject
             _isOpened = false;
             ChangeSpriteToClosed();
         }
+    }
+
+    private void OnValidate()
+    {
+        if (_gold < 0)
+            _gold = 0;
     }
 
     private void ChangeSpriteToOpened()

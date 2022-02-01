@@ -11,4 +11,13 @@ public class Character : MonoBehaviour
     {
         _gold += goldAmount;
     }
+
+    private void OnValidate()
+    {
+        if (_gold < 0)
+            _gold = 0;
+
+        if (_health < 0)
+            _health = 0;
+    }
 }

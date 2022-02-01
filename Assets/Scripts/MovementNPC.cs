@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator), typeof(Transform))]
+[RequireComponent(typeof(Animator))]
 public class MovementNPC : MonoBehaviour
 {
-    [Header("Components")]
-    [SerializeField] private Animator _animator;
-    [SerializeField] private Transform _transform;
     [Header("Parameters")]
     [SerializeField] private float _speed = 2;
     [SerializeField] private float _idleTime = 2;
@@ -14,13 +11,13 @@ public class MovementNPC : MonoBehaviour
     [SerializeField] private int _currentTargetId;
     [SerializeField] private List<Vector3> _targetPositions;
     
+    private Animator _animator;
     private bool _isTargerReached;
     private float _idleTimer;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _transform = GetComponent<Transform>();
         _isMoving = false;
         _isTargerReached = false;
         _currentTargetId = 0;
@@ -29,6 +26,15 @@ public class MovementNPC : MonoBehaviour
     private void Update ()
     {
         UpdateStatus();
+    }
+
+    private void OnValidate()
+    {
+        if (_speed < 0)
+            _speed = -_speed;
+        
+        if (_currentTargetId < 0)
+            _currentTargetId = 0;
     }
 
     private void Move (Vector3 direction)

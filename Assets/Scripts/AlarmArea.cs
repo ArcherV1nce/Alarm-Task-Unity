@@ -4,12 +4,26 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AlarmArea : InteractiveObject
 {
-    [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _sound;
     [SerializeField] private float _maxVolume;
     [SerializeField] private float _soundChangeSpeed;
     
-    [SerializeField] public bool IsPlaying;
+    private AudioSource _audioSource;
+    private bool _isPlaying;
+
+    public bool IsPlaying => _isPlaying;
+
+    public void TurnOff()
+    {
+        StopCoroutine(StartPlaying(_maxVolume));
+        StartCoroutine(StopPlaying());
+    }
+
+    public void TurnOn()
+    {
+        StopCoroutine(StopPlaying());
+        StartCoroutine(StartPlaying(_maxVolume));
+    }
 
     protected override void Awake ()
     {
@@ -17,7 +31,7 @@ public class AlarmArea : InteractiveObject
         _audioSource = GetComponent<AudioSource>();
         _audioSource.volume = 0;
         _audioSource.clip = _sound;
-        IsPlaying = false;
+        _isPlaying = false;
     }
 
     protected override void OnTriggerEnter2D(Collider2D collider2D)
@@ -28,24 +42,21 @@ public class AlarmArea : InteractiveObject
         }
     }
 
+    private void OnValidate()
+    {
+        if (_maxVolume < 0)
+            _maxVolume = Random.Range(0f, 1f);
+
+        if (_soundChangeSpeed < 0)
+            _soundChangeSpeed = Random.Range(0f, 1f);
+    }
+
     private void OnTriggerExit2D (Collider2D collider2D)
     {
         if (collider2D.GetComponent<Thief>())
         {
             TurnOff();
         }
-    }
-
-    public void TurnOff ()
-    {
-        StopCoroutine(StartPlaying(_maxVolume));
-        StartCoroutine(StopPlaying());
-    }
-
-    public void TurnOn ()
-    {
-        StopCoroutine(StopPlaying());
-        StartCoroutine(StartPlaying(_maxVolume));
     }
 
     private void IncreaseLoudness ()
@@ -67,7 +78,7 @@ public class AlarmArea : InteractiveObject
     private IEnumerator StartPlaying(float maxLoudness)
     {
         _audioSource.Play();
-        IsPlaying = true;
+        _isPlaying = true;
 
         while (_audioSource.volume < maxLoudness)
         {
@@ -85,6 +96,6 @@ public class AlarmArea : InteractiveObject
         }
 
         _audioSource.Stop();
-        IsPlaying = false;
+        _isPlaying = false;
     }
 }

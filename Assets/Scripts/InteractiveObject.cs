@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class InteractiveObject : MonoBehaviour
 {
-    [SerializeField] private Collider2D _collider;
+    private Collider2D _collider;
 
     protected virtual void Awake ()
     {
