@@ -10,19 +10,30 @@ public class AlarmArea : InteractiveObject
     
     private AudioSource _audioSource;
     private bool _isPlaying;
+    private Coroutine _activeCoroutine;
 
     public bool IsPlaying => _isPlaying;
 
     public void TurnOff()
     {
-        StopCoroutine(StartPlaying(_maxVolume));
-        StartCoroutine(StopPlaying());
+        if (_activeCoroutine != null)
+        {
+            StopCoroutine(_activeCoroutine);
+            _activeCoroutine = null;
+        }
+
+        _activeCoroutine = StartCoroutine(StopPlaying());
     }
 
     public void TurnOn()
     {
-        StopCoroutine(StopPlaying());
-        StartCoroutine(StartPlaying(_maxVolume));
+        if (_activeCoroutine != null)
+        {
+            StopCoroutine(_activeCoroutine);
+            _activeCoroutine = null;
+        }
+
+        _activeCoroutine = StartCoroutine(StartPlaying(_maxVolume));
     }
 
     protected override void Awake ()

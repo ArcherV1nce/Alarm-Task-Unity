@@ -2,6 +2,6 @@ public class Thief : Character
 {
     private void Awake()
     {
-        Name = "Thief " + Name;
+        _name = "Thief " + _name;
     }
 }

@@ -3293,6 +3293,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2669945289047710595, guid: c0b2c28804dfe8947bd02808479844c0, type: 3}
+      propertyPath: _name
+      value: "\u0416\u0443\u043B\u0438\u043A"
+      objectReference: {fileID: 0}
     - target: {fileID: 6801808049634298811, guid: c0b2c28804dfe8947bd02808479844c0, type: 3}
       propertyPath: _speed
       value: 1.5
@@ -3460,7 +3464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sound: {fileID: 8300000, guid: baa02aaf51706a640aa2386741a4bd5a, type: 3}
   _maxVolume: 0.6
-  _soundChangeSpeed: 0.3
+  _soundChangeSpeed: 0.25
 --- !u!82 &1568476528
 AudioSource:
   m_ObjectHideFlags: 0

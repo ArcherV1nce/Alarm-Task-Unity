@@ -5,7 +5,9 @@ public class Character : MonoBehaviour
     [SerializeField] private int _health;
     [SerializeField] private int _gold;
 
-    public string Name;
+    [SerializeField] protected string _name;
+
+    public string Name => _name;
 
     public void AddGold (int goldAmount)
     {

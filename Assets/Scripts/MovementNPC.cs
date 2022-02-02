@@ -14,6 +14,8 @@ public class MovementNPC : MonoBehaviour
     private Animator _animator;
     private bool _isTargerReached;
     private float _idleTimer;
+    private const string _horizontalSpeedAnimatorParameterName = "HorizontalSpeed";
+    private const string _isMovingAnimatorParameterName = "IsMoving";
 
     private void Awake()
     {
@@ -54,7 +56,7 @@ public class MovementNPC : MonoBehaviour
             }
             
             transform.position = Vector3.MoveTowards(transform.position, direction, _speed * Time.deltaTime);
-            _animator.SetFloat("HorizontalSpeed", horizontalSpeed);
+            _animator.SetFloat(_horizontalSpeedAnimatorParameterName, horizontalSpeed);
         }
 
         else
@@ -100,6 +102,6 @@ public class MovementNPC : MonoBehaviour
             }
         }
 
-        _animator.SetBool("IsMoving", _isMoving);
+        _animator.SetBool(_isMovingAnimatorParameterName, _isMoving);
     }
 }
